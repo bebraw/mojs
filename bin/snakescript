@@ -47,7 +47,7 @@ function proc(inputFile, outputDir, silent) {
     var data = fs.readFileSync(inputFile, 'utf-8');
     var output = s.transform(data);
     var target = path.join(outputDir, path.basename(inputFile, expectedExt) + '.js')
-    fs.writeSync(target, data);
+    fs.writeFileSync(target, output);
 
     if(!silent) console.log('Wrote ' + target);
 }
