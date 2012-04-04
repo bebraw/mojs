@@ -5,6 +5,7 @@
     "version": "0.1.0",
 
     "dependencies": {
+        "commander": ">= 0.5.2",
         "suite.js": ">= 0.1.1"
     },
 

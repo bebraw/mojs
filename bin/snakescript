@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+var VERSION = '0.1.0';
+
+var path = require('path');
+var fs = require('fs');
+var s = require('../');
+
+var program = require('commander');
+
+program.
+    version(VERSION).
+    option('-i --input <input>', 'input (file/directory)').
+    option('-o --output <output>', 'output directory').
+    option('-s --silent', 'silent').
+    parse(process.argv);
+
+if (!program.input) quit('Missing input');
+if (!program.output) quit('Missing output');
+
+main();
+
+function main() {
+    if(!path.existsSync(program.output)) fs.mkdirSync(program.output);
+
+    var stats = fs.statSync(program.input);
+    if(stats.isFile()) {
+        proc(program.input, program.output, program.silent);
+    }
+    if(stats.isDirectory()) {
+        var files = fs.readdirSync(program.input);
+
+        files.forEach(function(file) {
+            var p = path.join(program.input, file);
+            var stats = fs.statSync(p);
+
+            if(stats.isFile()) proc(p, program.output, program.silent);
+        });
+    }
+}
+
+function proc(inputFile, outputDir, silent) {
+    var expectedExt = '.ss';
+    var ext = path.extname(inputFile);
+
+    if(ext != expectedExt) return;
+
+    var data = fs.readFileSync(inputFile, 'utf-8');
+    var output = s.transform(data);
+    var target = path.join(outputDir, path.basename(inputFile, expectedExt) + '.js')
+    fs.writeSync(target, data);
+
+    if(!silent) console.log('Wrote ' + target);
+}
+
+function quit(msg) {
+    console.log(msg);
+    process.exit();
+}
