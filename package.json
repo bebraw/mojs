@@ -1,0 +1,31 @@
+{
+    "name": "snakescript",
+    "description": "JS precompiler with some extra syntax",
+    "author": "Juho Vepsalainen <bebraw@gmail.com>",
+    "version": "0.1.0",
+
+    "dependencies": {
+        "suite.js": ">= 0.1.1"
+    },
+
+    "main": "./lib/snakescript.js",
+    "bin": "./bin/snakescript",
+
+    "repository": {
+        "type": "git",
+        "url": "https://bebraw@github.com/bebraw/snakescript.git"
+    },
+
+    "homepage": "https://github.com/bebraw/snakescript",
+
+    "bugs": {
+        "url": "https://github.com/bebraw/snakescript/issues"
+    },
+
+    "keywords": ["javascript", "precompiler"],
+
+    "licenses": [{
+        "type": "MIT",
+        "url": "https://github.com/bebraw/snakescript/blob/master/LICENSE"
+    }]
+}
