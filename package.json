@@ -2,7 +2,7 @@
     "name": "snakescript",
     "description": "JS precompiler with some extra syntax",
     "author": "Juho Vepsalainen <bebraw@gmail.com>",
-    "version": "0.1.5",
+    "version": "0.1.6",
 
     "dependencies": {
         "commander": ">= 0.5.2",
