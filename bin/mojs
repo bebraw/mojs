@@ -39,7 +39,7 @@ function main() {
 }
 
 function proc(inputFile, outputDir, silent) {
-    var expectedExt = '.ss';
+    var expectedExt = '.mojs';
     var ext = path.extname(inputFile);
 
     if(ext != expectedExt) return;

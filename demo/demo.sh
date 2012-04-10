@@ -1,2 +1,2 @@
-snakescript -i input -o output
+mojs -i input -o output
 

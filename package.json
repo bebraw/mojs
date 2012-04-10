@@ -1,5 +1,5 @@
 {
-    "name": "snakescript",
+    "name": "mojs",
     "description": "JS precompiler with some extra syntax",
     "author": "Juho Vepsalainen <bebraw@gmail.com>",
     "version": "0.1.7",
@@ -9,24 +9,24 @@
         "suite.js": ">= 0.1.1"
     },
 
-    "main": "./lib/snakescript.js",
-    "bin": "./bin/snakescript",
+    "main": "./lib/mojs.js",
+    "bin": "./bin/mojs",
 
     "repository": {
         "type": "git",
-        "url": "https://bebraw@github.com/bebraw/snakescript.git"
+        "url": "https://bebraw@github.com/bebraw/mojs.git"
     },
 
-    "homepage": "https://github.com/bebraw/snakescript",
+    "homepage": "https://github.com/bebraw/mojs",
 
     "bugs": {
-        "url": "https://github.com/bebraw/snakescript/issues"
+        "url": "https://github.com/bebraw/mojs/issues"
     },
 
     "keywords": ["javascript", "precompiler"],
 
     "licenses": [{
         "type": "MIT",
-        "url": "https://github.com/bebraw/snakescript/blob/master/LICENSE"
+        "url": "https://github.com/bebraw/mojs/blob/master/LICENSE"
     }]
 }
