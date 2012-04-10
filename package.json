@@ -7,7 +7,7 @@
     "dependencies": {
         "commander": ">= 0.5.2",
         "suite.js": ">= 0.1.1",
-        "funkit": ">=0.0.1"
+        "funkit": ">=0.0.2"
     },
 
     "main": "./lib/mojs.js",
