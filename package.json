@@ -2,7 +2,7 @@
     "name": "mojs",
     "description": "JS precompiler with some extra syntax",
     "author": "Juho Vepsalainen <bebraw@gmail.com>",
-    "version": "0.1.7",
+    "version": "0.1.8",
 
     "dependencies": {
         "commander": ">= 0.5.2",
