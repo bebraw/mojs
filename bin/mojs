@@ -4,6 +4,7 @@ var VERSION = '0.1.8';
 var path = require('path');
 var fs = require('fs');
 var s = require('../');
+var f = require('funkit');
 
 var program = require('commander');
 
@@ -14,10 +15,9 @@ program.
     option('-s --silent', 'silent').
     parse(process.argv);
 
-if (!program.input) quit('Missing input');
-if (!program.output) quit('Missing output');
-
-main();
+if (!program.input) repl();
+else if (!program.output) repl();
+else main();
 
 function main() {
     if(!path.existsSync(program.output)) fs.mkdirSync(program.output);
@@ -52,7 +52,18 @@ function proc(inputFile, outputDir, silent) {
     if(!silent) console.log('Wrote ' + target);
 }
 
-function quit(msg) {
-    console.log(msg);
-    process.exit();
+function repl() {
+    var r = require('repl');
+    var prefix = 'mojs ' + VERSION + '> ';
+
+    r.start('', process, customEval);
+    //process.stdout.write(prefix);
+
+    // TODO: figure out how to deal with exceptions
+    function customEval(i, globals) {
+        i = f.rtrim(f.ltrim(i, '('), ')');
+        console.log(eval(s.transformLine(s.features, i), globals));
+        //process.stdout.write(prefix);
+    }
 }
+
