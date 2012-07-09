@@ -1,56 +1,16 @@
 #!/usr/bin/env node
-var VERSION = '0.1.9';
-
-var path = require('path');
-var fs = require('fs');
+var ioscript = require('ioscript.js');
 var s = require('../');
-var f = require('funkit');
 
-var program = require('commander');
+ioscript({
+    version: '0.1.9',
+    args: process.argv,
+    inputExtension: 'mojs',
+    outputExtension: 'js',
+    transform: s.transform
+});
 
-program.
-    version(VERSION).
-    option('-i --input <input>', 'input (file/directory)').
-    option('-o --output <output>', 'output directory').
-    option('-s --silent', 'silent').
-    parse(process.argv);
-
-if (!program.input) repl();
-else if (!program.output) repl();
-else main();
-
-function main() {
-    if(!fs.existsSync(program.output)) fs.mkdirSync(program.output);
-
-    var stats = fs.statSync(program.input);
-    if(stats.isFile()) {
-        proc(program.input, program.output, program.silent);
-    }
-    if(stats.isDirectory()) {
-        var files = fs.readdirSync(program.input);
-
-        files.forEach(function(file) {
-            var p = path.join(program.input, file);
-            var stats = fs.statSync(p);
-
-            if(stats.isFile()) proc(p, program.output, program.silent);
-        });
-    }
-}
-
-function proc(inputFile, outputDir, silent) {
-    var expectedExt = '.mojs';
-    var ext = path.extname(inputFile);
-
-    if(ext != expectedExt) return;
-
-    var data = fs.readFileSync(inputFile, 'utf-8');
-    var output = s.transform(data);
-    var target = path.join(outputDir, path.basename(inputFile, expectedExt) + '.js')
-    fs.writeFileSync(target, output);
-
-    if(!silent) console.log('Wrote ' + target);
-}
+// TODO: hook up repl
 
 function repl() {
     var r = require('repl');
@@ -66,4 +26,3 @@ function repl() {
         //process.stdout.write(prefix);
     }
 }
-

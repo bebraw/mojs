@@ -1,2 +1,2 @@
-mojs -i input -o output
+../bin/mojs -i input -o output
 
