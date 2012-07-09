@@ -3,7 +3,7 @@ var ioscript = require('ioscript.js');
 var s = require('../');
 
 ioscript({
-    version: '0.1.9',
+    version: '0.2.0',
     args: process.argv,
     inputExtension: 'mojs',
     outputExtension: 'js',
