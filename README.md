@@ -1,3 +1,5 @@
+> **DEPRECATED!** If you want a nice precompiler, check out [Babel](https://babeljs.io/) instead.
+
 # mojs - Precompiler for JavaScript
 
 mojs adds some custom syntax to JavaScript (mainly better lambdas and other func stuff).
